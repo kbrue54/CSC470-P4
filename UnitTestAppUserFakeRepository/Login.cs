@@ -15,6 +15,22 @@ namespace UnitTestAppUserFakeRepository
             FakeAppUserRepository AppUsRepository = new FakeAppUserRepository();
 
             bool ActuallyAuthenticated = AppUsRepository.Login(UserName, Password);
+
+            Assert.AreEqual(true, ActuallyAuthenticated);
         }
+        [TestMethod]
+        public void LoginWithIncorrectCredentialsFail()
+        {
+            const string UserName = "kbrue545";
+            const string Password = "Password1235";
+            FakeAppUserRepository AppUsRepository = new FakeAppUserRepository();
+
+            bool ActuallyAuthenticated = AppUsRepository.Login(UserName, Password);
+
+            Assert.AreEqual(false, ActuallyAuthenticated);
+        }
+
+
+
     }
 }

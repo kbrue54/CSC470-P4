@@ -36,14 +36,25 @@ namespace CSC470_P3
 
         public bool Login(string UserName, string Password)
         {
-            AppUser user = GetByUserName(UserName);
-            if(user.Password == Password)
+            AppUser user;
+
+            try
             {
-                return true;
-            } else {
-                return false;
+                user = GetByUserName(UserName);
+
             }
-                
+            catch { return false; }
+            user = GetByUserName(UserName);
+
+                if (user.Password == Password)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            
         }
 
         public List<AppUser> GetAll()
